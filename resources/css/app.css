@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+	--primary-50: #eff6ff;
+	--primary-100: #dbeafe;
+	--primary-200: #bfdbfe;
+	--primary-400: #60a5fa;
+	--primary-600: #2563eb;
+	--muted: #6b7280;
+}
+
+.site-card{
+	background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+	border: 1px solid rgba(37,99,235,0.06);
+	border-radius: .5rem;
+	box-shadow: 0 6px 18px rgba(14,38,78,0.06);
+}
+
+.btn-primary{
+	background-color: var(--primary-600);
+	color: #fff;
+	padding: .5rem .9rem;
+	border-radius: .375rem;
+	border: none;
+}
+
+.btn-primary:hover{ background-color: #1e40af; }
+
+.table-soft{
+	width:100%;
+	border-collapse: collapse;
+}
+.table-soft th{
+	text-align:left;
+	padding:.75rem;
+	background: var(--primary-50);
+	color: var(--primary-600);
+	border-bottom:1px solid rgba(37,99,235,0.06);
+}
+.table-soft td{
+	padding:.75rem;
+	border-bottom:1px solid rgba(14,38,78,0.04);
+}
+
+/* Side modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(2,6,23,0.45);display:none;z-index:60}
+.side-modal{position:fixed;right:2rem;top:6rem;width:520px;max-width:calc(100% - 3rem);background:#ffffff;border-radius:.75rem;box-shadow:0 30px 60px rgba(2,6,23,0.4);z-index:70;display:none}
+.side-modal .inner{display:flex;gap:1rem;padding:1.25rem}
+.side-modal .cover{width:180px;height:240px;flex:0 0 180px;border-radius:.5rem;overflow:hidden;background:#f3f4f6;display:flex;align-items:center;justify-content:center}
+.side-modal .meta{flex:1;display:flex;flex-direction:column}
+.side-modal .meta h2{color:var(--primary-600);font-size:1.05rem;margin-bottom:.25rem}
+.side-modal .meta p{color:var(--muted);font-size:.9rem}
+.side-modal .actions{margin-top:auto;display:flex;gap:.5rem}
+.side-modal.show, .modal-overlay.show{display:block}
+
+/* Centered modal */
+.centered-modal{z-index:70;display:none}
+.centered-modal .inner{display:flex;gap:1rem;padding:1.25rem}
+.centered-modal .cover{width:180px;height:240px;flex:0 0 180px;border-radius:.5rem;overflow:hidden;background:#f3f4f6;display:flex;align-items:center;justify-content:center}
+.centered-modal .meta{flex:1;display:flex;flex-direction:column}
+.centered-modal .meta h2{color:var(--primary-600);font-size:1.05rem;margin-bottom:.25rem}
+.centered-modal .meta p{color:var(--muted);font-size:.9rem}
+.centered-modal .actions{margin-top:auto;display:flex;gap:.5rem}
+.centered-modal.show, .modal-overlay.show{display:block}
+
+/* Book card portrait */
+.book-card{width:10.5rem;min-height:14rem;border-radius:.5rem;overflow:hidden;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(37,99,235,0.06);box-shadow:0 6px 18px rgba(14,38,78,0.03);cursor:pointer}
+.book-card .cover-thumb{height:10rem;background:#f8fafc;display:flex;align-items:center;justify-content:center}
+.book-card .info{padding:.5rem}
+.book-card .title{font-weight:600;color:var(--primary-600);font-size:.825rem;line-height:1.05}
+.book-card .author{font-size:.7rem;color:var(--muted)}
+
+/* search suggestions */
+.search-suggestions-list{max-height:240px;overflow:auto}
+.search-suggestion{padding:.5rem .75rem;border-bottom:1px solid rgba(2,6,23,0.04);cursor:pointer}
+.search-suggestion:hover{background:var(--primary-50)}
+.search-suggestion .meta{font-size:.85rem;color:var(--primary-600)}
+.search-suggestion .sub{font-size:.75rem;color:var(--muted)}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 40;
+    display: none;
+}
+
+.modal-overlay.show {
+    display: block;
+}
