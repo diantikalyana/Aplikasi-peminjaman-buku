@@ -93,6 +93,9 @@
 
         <!-- AKSI -->
         <td class="p-3 flex gap-2">
+            <a href="{{ route('books.show', $book->id) }}" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 text-xs">
+                Lihat
+            </a>
             <a href="{{ route('books.edit', $book->id) }}" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-xs">
                 Edit
             </a>

@@ -114,6 +114,11 @@ class BookController extends Controller
         return redirect()->route('books.index')->with('success', 'Buku berhasil dihapus');
     }
 
+    public function show(Book $book)
+    {
+        return view('books.show', compact('book'));
+    }
+
     public function exportPdf(Request $request)
     {
         $query = Book::with('category');

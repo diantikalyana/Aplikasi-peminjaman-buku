@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class UserController extends Controller
 {
@@ -79,5 +80,24 @@ class UserController extends Controller
 
         return redirect()->route('users.index')
             ->with('success', 'User berhasil dihapus');
+    }
+
+    public function exportPdf(Request $request)
+    {
+        $query = User::query();
+
+        // SEARCH
+        if ($request->search) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%$search%")
+                  ->orWhere('full_name', 'like', "%$search%")
+                  ->orWhere('email', 'like', "%$search%");
+            });
+        }
+
+        $users = $query->latest()->get();
+        $pdf = Pdf::loadView('users.pdf', compact('users'));
+        return $pdf->download('data_anggota.pdf');
     }
 }

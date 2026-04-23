@@ -6,25 +6,25 @@
 
 <nav class="space-y-2">
 
-        <a href="/dashboard" class="block px-3 py-2 rounded hover:bg-slate-700">
+        <a href="/dashboard" class="block px-3 py-2 rounded hover:bg-slate-700 {{ request()->is('dashboard') ? 'bg-slate-700' : '' }}">
             Dashboard
         </a>
 
         <p class="text-sm text-gray-400 mt-4">DATA</p>
 
-        <a href="/books" class="block px-3 py-2 rounded hover:bg-slate-700">
+        <a href="/books" class="block px-3 py-2 rounded hover:bg-slate-700 {{ request()->is('books*') ? 'bg-slate-700' : '' }}">
             Data Buku
         </a>
 
-        <a href="/categories" class="block px-3 py-2 rounded hover:bg-slate-700">
+        <a href="/categories" class="block px-3 py-2 rounded hover:bg-slate-700 {{ request()->is('categories*') ? 'bg-slate-700' : '' }}">
             Kategori Buku
         </a>
 
-        <a href="/users" class="block px-3 py-2 rounded hover:bg-slate-700">
+        <a href="/users" class="block px-3 py-2 rounded hover:bg-slate-700 {{ request()->is('users*') ? 'bg-slate-700' : '' }}">
             Data Anggota
         </a>
 
-        <a href="/transactions" class="block px-3 py-2 rounded bg-slate-700">
+        <a href="/transactions" class="block px-3 py-2 rounded hover:bg-slate-700 {{ request()->is('transactions*') ? 'bg-slate-700' : '' }}">
             Transaksi
         </a>
 
@@ -32,16 +32,16 @@
             <p class="text-sm text-gray-400 mt-4">LAPORAN & NOTIFIKASI</p>
 
             <div x-data="{ open:false }" class="">
-                <button onclick="document.getElementById('laporanList').classList.toggle('hidden')" class="w-full text-left px-3 py-2 rounded hover:bg-slate-700">Laporan ▾</button>
+                <button onclick="document.getElementById('laporanList').classList.toggle('hidden')" class="w-full text-left px-3 py-2 rounded hover:bg-slate-700 {{ request()->routeIs('admin.reports.*') ? 'bg-slate-700' : '' }}">Laporan ▾</button>
                 <div id="laporanList" class="hidden ml-2 mt-2">
-                    <a href="{{ route('admin.reports.bookings') }}" class="block px-3 py-2 rounded hover:bg-slate-700">Laporan Bookings</a>
-                    <a href="{{ route('admin.reports.transactions') }}" class="block px-3 py-2 rounded hover:bg-slate-700">Peminjaman & Pengembalian</a>
-                    <a href="{{ route('admin.reports.late') }}" class="block px-3 py-2 rounded hover:bg-slate-700">Keterlambatan</a>
+                    <a href="{{ route('admin.reports.bookings') }}" class="block px-3 py-2 rounded hover:bg-slate-700 {{ request()->routeIs('admin.reports.bookings') ? 'bg-slate-700' : '' }}">Laporan Bookings</a>
+                    <a href="{{ route('admin.reports.transactions') }}" class="block px-3 py-2 rounded hover:bg-slate-700 {{ request()->routeIs('admin.reports.transactions') ? 'bg-slate-700' : '' }}">Peminjaman & Pengembalian</a>
+                    <a href="{{ route('admin.reports.late') }}" class="block px-3 py-2 rounded hover:bg-slate-700 {{ request()->routeIs('admin.reports.late') ? 'bg-slate-700' : '' }}">Keterlambatan</a>
                 </div>
             </div>
 
             {{-- NOTIFICATION LINK --}}
-            <a href="{{ route('admin.notifications.index') }}" class="flex items-center justify-between px-3 py-2 rounded hover:bg-slate-700">
+            <a href="{{ route('admin.notifications.index') }}" class="flex items-center justify-between px-3 py-2 rounded hover:bg-slate-700 {{ request()->routeIs('admin.notifications.*') ? 'bg-slate-700' : '' }}">
                 <span>🔔 Notifikasi</span>
                 @php
                     $unreadCount = auth()->user()->unreadNotificationsCount() ?? 0;

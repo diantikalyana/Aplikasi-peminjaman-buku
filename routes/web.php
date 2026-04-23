@@ -21,6 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/books/pdf', [BookController::class, 'exportPdf'])->name('books.pdf');
+Route::get('/users/pdf', [UserController::class, 'exportPdf'])->name('users.pdf');
+
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
     ->name('dashboard');
@@ -82,7 +85,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/books/pdf', [BookController::class, 'exportPdf'])->name('books.pdf');
 Route::resource('books', BookController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('users', UserController::class);
